@@ -12,7 +12,13 @@ class Manifests extends React.Component {
 
     render(){
 
-        const {data} = this.props;
+        let {data, searchTerm} = this.props;
+        console.log(searchTerm)
+
+        data = searchTerm ? data.filter((manifest)=>{   
+                    console.log(manifest.manifestId)
+            return manifest.manifestId.indexOf(searchTerm) > -1
+        }) : data;
 
         const manifestsAccordian = (
         <Accordion>
