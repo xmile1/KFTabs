@@ -11,13 +11,17 @@ class Manifests extends React.Component {
     }
 
     render(){
-
+        // searchTerm was passed as a props from the App component
         let {data, searchTerm} = this.props;
-        console.log(searchTerm)
 
-        data = searchTerm ? data.filter((manifest)=>{   
-                    console.log(manifest.manifestId)
-            return manifest.manifestId.indexOf(searchTerm) > -1
+        // here i am using javascript filter prototype method
+        // to filter the data based on your search term
+        data = searchTerm ? data.filter((manifest)=>{
+            //indexOf is a method that can be used on a string to check if a value is a substring in it
+            // there are other ways to do this chekcout substring and substr
+            return manifest.manifestId.indexOf(searchTerm) > -1 || 
+            manifest.snapshot[0].tag.indexOf(searchTerm) > -1 ||
+            manifest.snapshot[0].lable.indexOf(searchTerm)
         }) : data;
 
         const manifestsAccordian = (
