@@ -20,8 +20,8 @@ class Manifests extends React.Component {
             //indexOf is a method that can be used on a string to check if a value is a substring in it
             // there are other ways to do this chekcout substring and substr
             return manifest.manifestId.indexOf(searchTerm) > -1 || 
-            manifest.snapshot[0].tag.indexOf(searchTerm) > -1 ||
-            manifest.snapshot[0].lable.indexOf(searchTerm)
+            (manifest.snapshots && manifest.snapshots[0] && manifest.snapshots[0].tag.indexOf(searchTerm) > -1) ||
+            (manifest.snapshots && manifest.snapshots[0] && manifest.snapshots[0].label.indexOf(searchTerm) > -1)
         }) : data;
 
         const manifestsAccordian = (
